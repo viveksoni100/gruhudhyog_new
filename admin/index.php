@@ -92,6 +92,7 @@ if ($result->num_rows > 0) {
                                             <th>Created By</th>
                                             <th>Updated Date</th>
                                             <th>Updated By</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <?php if(!empty($category_dataset)) { ?>
@@ -103,6 +104,7 @@ if ($result->num_rows > 0) {
                                                 <td><?php echo $category['created_by']; ?></td>
                                                 <td><?php echo $category['updated_at']; ?></td>
                                                 <td><?php echo $category['updated_by']; ?></td>
+                                                <td><a href="/gruhudhyog_new/php/deleteCategory.php?categoryId=<?php echo $category['id']; ?>" class="btn btn-danger">Delete</a></td>
                                             </tr>
                                         <?php } ?>
                                     <?php } ?>
