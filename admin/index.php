@@ -80,7 +80,7 @@ if ($result->num_rows > 0) {
                         <div class="card mb-4">
                             <div class="card-header">
                                 <!-- <i class="fas fa-table me-1"></i> -->
-                                <a class="btn btn-primary" hrer="">Add Category</a>
+                                <a class="btn btn-primary" href="add-category.php">Add Category</a>
                             </div>
                             <div class="card-body">
                                 <table id="categoryTable" class="display">

@@ -217,15 +217,6 @@ if ($result->num_rows > 0) {
                         <h2><?php echo $product['name']; ?></h2>
                         <h5>Net Qty : <?php echo $product['qty'].' gm'; ?></h5>
                         <h5>Price : <?php echo $product['price'].' ₹'; ?></h5>
-                        <!--<a href="php/addToCart.php?productId=
-                                         <?php echo $product['id']; ?>
-                                         &categoryName=<?php echo $product['category_name']; ?>
-                                         &price=<?php echo $product['price']; ?>
-                                         &qty=<?php echo $product['qty']; ?>
-                                         &sellerName=<?php echo $product['seller_name']; ?>
-                                         &imageName=<?php echo $product['image_name']; ?>
-                                         &imagePath=<?php echo $product['image_path']; ?>
-                                         &productName=<?php echo $product['name']; ?>">Add to Cart</a>-->
                         <button href="#" class="addToCart" data-productId="<?php echo $product['id']; ?>" id="<?php echo $product['id']; ?>" data-productName="<?php echo $product['name']; ?>" data-categoryName="<?php echo $product['category_name']; ?>" data-price="<?php echo $product['price']; ?>" data-qty="<?php echo $product['qty']; ?>" data-sellerName="<?php echo $product['seller_name']; ?>" data-imageName="<?php echo $product['image_name']; ?>" data-imagePath="<?php echo $product['image_path']; ?>">Add to Cart</button>
                     </div>
                 </div>

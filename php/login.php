@@ -16,9 +16,9 @@ while($obj = $resultset->fetch_object()){
 }
 
 if ($savedPassword != $hashed_password) {
-    header("Location: http://localhost/gruhudhyog/login.html?reg=failed");
+    header("Location: http://localhost/gruhudhyog_new/login.php?reg=failed");
 } else {
-    header("Location: http://localhost/gruhudhyog/index.html?login=success&user=".$username);
+    header("Location: http://localhost/gruhudhyog_new/index.php?login=success&user=".$username);
 }
 
 ?>

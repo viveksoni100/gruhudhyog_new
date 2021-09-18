@@ -13,7 +13,7 @@ $sql = "INSERT INTO user (name, email, password) values('$username', '$email', '
 if ($conn->query($sql) === TRUE) {
     $conn->close();
     // echo 'Done 6e...';
-    header("Location: http://localhost/gruhudhyog/login.html?reg=success");
+    header("Location: http://localhost/gruhudhyog_new/login.html?reg=success");
     exit();
 } else {
     $conn->close();
