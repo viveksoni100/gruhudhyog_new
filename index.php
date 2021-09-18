@@ -474,7 +474,7 @@ if ($result->num_rows > 0) {
                 let id = elem.prop('id')
                 $.ajax({
                     type: "GET",
-                    url: "/gruhudhyog/php/addToCart.php",
+                    url: "/gruhudhyog_new/php/addToCart.php",
                     data: "id=" + elem.attr('data-productId') + "&productName=" + elem.attr('data-productName') +
                         "&categoryName=" + elem.attr('data-categoryName') +
                         "&price=" + elem.attr('data-price') +

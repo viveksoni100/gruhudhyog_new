@@ -15,7 +15,6 @@ if ($result->num_rows > 0) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Admin Panel</title>
-        <!-- <link href="css/datatable.css" rel="stylesheet" /> -->
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -52,18 +51,6 @@ if ($result->num_rows > 0) {
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Product
                             </a>
-                            <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                                </nav>
-                            </div> -->
-                            
                         </div>
                     </div>
                 </nav>
@@ -79,8 +66,7 @@ if ($result->num_rows > 0) {
 						
                         <div class="card mb-4">
                             <div class="card-header">
-                                <!-- <i class="fas fa-table me-1"></i> -->
-                                <a class="btn btn-primary editor-create">Add Category</a>
+                                <a class="btn btn-primary" href="add-product.php">Add Product</a>
                             </div>
                             <div class="card-body">
                                 <table id="categoryTable" class="display">
@@ -126,7 +112,6 @@ if ($result->num_rows > 0) {
         </div>
         <script src="js/bootstrap.js"></script>
         <script src="js/scripts.js"></script>
-        <!-- <script src="js/datatable.js"></script>
         <script src="js/datatables-simple-demo.js"></script> -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>

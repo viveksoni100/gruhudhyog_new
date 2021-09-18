@@ -1,11 +1,11 @@
 <?php
 require_once('config.php');
 
-$qery_for_fetching_category_dataset = "SELECT id, name, created_at, created_by, updated_at, updated_by FROM category";
-$result = $conn->query($qery_for_fetching_category_dataset);
-$category_dataset = [];
+$qery_for_fetching_product_dataset = "SELECT id, name, category_id, price, qty, seller_id, image_name, image_path, category_name, seller_name FROM product";
+$result = $conn->query($qery_for_fetching_product_dataset);
+$product_dataset = [];
 if ($result->num_rows > 0) {
-    $category_dataset = $result->fetch_all(MYSQLI_ASSOC);
+    $product_dataset = $result->fetch_all(MYSQLI_ASSOC);
 }
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,6 @@ if ($result->num_rows > 0) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Admin Panel</title>
-        <!-- <link href="css/datatable.css" rel="stylesheet" /> -->
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -59,43 +58,16 @@ if ($result->num_rows > 0) {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Category</h1>
+                        <h1 class="mt-4">Product</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="">Category</a></li>
+                            <li class="breadcrumb-item"><a href="">Product</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
-						
                         <div class="card mb-4">
-                            <div class="card-header">
-                                <a class="btn btn-primary" href="add-category.php">Add Category</a>
-                            </div>
                             <div class="card-body">
-                                <table id="categoryTable" class="display">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Created Date</th>
-                                            <th>Created By</th>
-                                            <th>Updated Date</th>
-                                            <th>Updated By</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <?php if(!empty($category_dataset)) { ?>
-                                        <?php foreach($category_dataset as $category) { ?>
-                                            <tr>
-                                                <td><?php echo $category['id']; ?></td>
-                                                <td><?php echo $category['name']; ?></td>
-                                                <td><?php echo $category['created_at']; ?></td>
-                                                <td><?php echo $category['created_by']; ?></td>
-                                                <td><?php echo $category['updated_at']; ?></td>
-                                                <td><?php echo $category['updated_by']; ?></td>
-                                                <td><a href="/gruhudhyog_new/php/deleteCategory.php?categoryId=<?php echo $category['id']; ?>" class="btn btn-danger">Delete</a></td>
-                                            </tr>
-                                        <?php } ?>
-                                    <?php } ?>
-                                </table>
+                                <form method="post" action="../php/addProduct.php">
+                                    
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -112,6 +84,7 @@ if ($result->num_rows > 0) {
         </div>
         <script src="js/bootstrap.js"></script>
         <script src="js/scripts.js"></script>
+        <script src="js/datatables-simple-demo.js"></script> -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <script>

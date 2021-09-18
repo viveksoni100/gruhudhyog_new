@@ -16,7 +16,6 @@ if ($result->num_rows > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Admin Panel</title>
-    <!-- <link href="css/datatable.css" rel="stylesheet" /> -->
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -54,18 +53,6 @@ if ($result->num_rows > 0) {
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Product
                         </a>
-                        <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                                </nav>
-                            </div> -->
-
                     </div>
                 </div>
             </nav>
@@ -81,17 +68,11 @@ if ($result->num_rows > 0) {
 
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form method="post" action="../php/addCategory.php">
-                                    <input type="text" id="categoryName" required>
-                                <button type="submit">Submit</button>
-                            </form>
-                            <!--<form method="post" action="../php/addCategory.php">
-                                <div class="form-group">
-                                    <label for="categoryName" style="margin-bottom: 10px;">Category Name</label>
-                                    <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
-                            </form>-->
+                            <div class="form-group">
+                                <label for="categoryName" style="margin-bottom: 10px;">Category Name</label>
+                                <input type="text" class="form-control" id="categoryName" required>
+                                <button class="btn btn-primary" onclick="addInCategory()" style="margin-top: 20px;">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,16 +89,29 @@ if ($result->num_rows > 0) {
     </div>
     <script src="js/bootstrap.js"></script>
     <script src="js/scripts.js"></script>
-    <!-- <script src="js/datatable.js"></script>
-        <script src="js/datatables-simple-demo.js"></script> -->
+    <script src="js/datatables-simple-demo.js"></script> -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
             $('#categoryTable').DataTable();
         });
     </script>
-
+    <script type="text/javascript">
+        function addInCategory() {
+            let catName = document.getElementById('categoryName').value;
+            console.log(catName);
+            $.ajax({
+                type: "GET",
+                url: "/gruhudhyog_new/php/addCategory.php",
+                data: "categoryName=" + catName,
+                dataType: "json"
+            }).done(function() {
+                console.log("Success...!");
+            });
+            window.location = "index.php";
+        }
+    </script>
 </body>
 
 </html>
