@@ -92,8 +92,7 @@ if ($result->num_rows > 0) {
                                             <th>Price (₹)</th>
                                             <th>Qty</th>
                                             <th>Seller</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <?php if(!empty($product_dataset)) { ?>
@@ -106,8 +105,7 @@ if ($result->num_rows > 0) {
                                                 <td><?php echo $product['price']; ?></td>
                                                 <td><?php echo $product['qty']; ?></td>
                                                 <td><?php echo $product['seller_name']; ?></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td><a href="/gruhudhyog_new/php/deleteProduct.php?productId=<?php echo $product['id']; ?>" class="btn btn-danger">Delete</a></td>
                                             </tr>
                                         <?php } ?>
                                     <?php } ?>
