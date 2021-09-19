@@ -123,7 +123,7 @@ $count = $result->fetch_assoc();
                 <tr>
                     <td></td>
                     <td colspan="1" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center"><strong><?php echo $total_amount['TOTAL'] ?></strong></td>
+                    <td class="hidden-xs text-center"><strong><?php echo 'Grand Total : '.$total_amount['TOTAL'] ?></strong></td>
                     <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
                 </tr>
             </tfoot>
