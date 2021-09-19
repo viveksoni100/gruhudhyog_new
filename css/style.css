@@ -144,7 +144,6 @@ a:focus {
 
 @media (min-width: 992px) {
     .navbar {
-        position: absolute;
         width: 100%;
         padding: 30px 60px;
         background: transparent !important;

@@ -70,11 +70,9 @@ if ($result->num_rows > 0) {
                     <a href="login.html" class="nav-item nav-link loginBtn">Login</a>
                     <a href="Register.html" class="nav-item nav-link regBtn">Register</a>
                     <a href="login.html" class="nav-item nav-link" style="display: none;" id="loggedInUser">Hi, Vivek</a>
-                    <i class="fas fa-cart-arrow-down" style="font-size: x-large; margin-top: 8px; cursor: pointer;">
-                        <!--Vivek-->
+                    <a href="cart.php"><i class="fas fa-cart-arrow-down" style="font-size: x-large; margin-top: 8px; cursor: pointer;">
                         <span id="cartCount">0</span>
-                    </i>
-
+                    </i></a>
                     <div class="nav-item dropdown">
 
                         <div class="dropdown-menu">
@@ -240,7 +238,7 @@ if ($result->num_rows > 0) {
                         <h2><?php echo $product['name']; ?></h2>
                         <h5>Net Qty : <?php echo $product['qty'].' gm'; ?></h5>
                         <h5>Price : <?php echo $product['price'].' ₹'; ?></h5>
-                        <a href="#">Add to Cart</a>
+                        <button href="#" class="addToCart" data-productId="<?php echo $product['id']; ?>" id="<?php echo $product['id']; ?>" data-productName="<?php echo $product['name']; ?>" data-categoryName="<?php echo $product['category_name']; ?>" data-price="<?php echo $product['price']; ?>" data-qty="<?php echo $product['qty']; ?>" data-sellerName="<?php echo $product['seller_name']; ?>" data-imageName="<?php echo $product['image_name']; ?>" data-imagePath="<?php echo $product['image_path']; ?>">Add to Cart</button>
                     </div>
                 </div>
                 <?php } ?>
@@ -263,7 +261,7 @@ if ($result->num_rows > 0) {
                         <h2><?php echo $product['name']; ?></h2>
                         <h5>Net Qty : <?php echo $product['qty'].' gm'; ?></h5>
                         <h5>Price : <?php echo $product['price'].' ₹'; ?></h5>
-                        <a href="#">Add to Cart</a>
+                        <button href="#" class="addToCart" data-productId="<?php echo $product['id']; ?>" id="<?php echo $product['id']; ?>" data-productName="<?php echo $product['name']; ?>" data-categoryName="<?php echo $product['category_name']; ?>" data-price="<?php echo $product['price']; ?>" data-qty="<?php echo $product['qty']; ?>" data-sellerName="<?php echo $product['seller_name']; ?>" data-imageName="<?php echo $product['image_name']; ?>" data-imagePath="<?php echo $product['image_path']; ?>">Add to Cart</button>
                     </div>
                 </div>
                 <?php } ?>
@@ -495,7 +493,7 @@ if ($result->num_rows > 0) {
                         document.getElementById("cartCount").innerHTML = count;
                     }
                 }
-                xmlhttp.open("GET", "/gruhudhyog/php/cartCounter.php", true);
+                xmlhttp.open("GET", "/gruhudhyog_new/php/cartCounter.php", true);
                 xmlhttp.send();
                 return false;
             });
