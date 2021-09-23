@@ -111,7 +111,9 @@ $count = $result->fetch_assoc();
                             </td>
                             <td class="actions" data-th="">
 
-                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                <a class="btn btn-danger btn-sm" 
+                                   href="php/deleteFromCart.php?id=<?php echo $cart_product['id']; ?>"
+                                   style="color: white;"><i class="fas fa-trash-alt"></i></a>
                             </td>
 
 
@@ -124,7 +126,7 @@ $count = $result->fetch_assoc();
                     <td></td>
                     <td colspan="1" class="hidden-xs"></td>
                     <td class="hidden-xs text-center"><strong><?php echo 'Grand Total : '.$total_amount['TOTAL'] ?></strong></td>
-                    <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    <td><a href="php/stripePage.php" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
                 </tr>
             </tfoot>
         </table>

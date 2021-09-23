@@ -215,7 +215,7 @@ if ($result->num_rows > 0) {
                         <h2><?php echo $product['name']; ?></h2>
                         <h5>Net Qty : <?php echo $product['qty'].' gm'; ?></h5>
                         <h5>Price : <?php echo $product['price'].' ₹'; ?></h5>
-                        <button href="#" class="addToCart" data-productId="<?php echo $product['id']; ?>" id="<?php echo $product['id']; ?>" data-productName="<?php echo $product['name']; ?>" data-categoryName="<?php echo $product['category_name']; ?>" data-price="<?php echo $product['price']; ?>" data-qty="<?php echo $product['qty']; ?>" data-sellerName="<?php echo $product['seller_name']; ?>" data-imageName="<?php echo $product['image_name']; ?>" data-imagePath="<?php echo $product['image_path']; ?>">Add to Cart</button>
+                        <button href="#" class="addToCart btn btn-primary" data-productId="<?php echo $product['id']; ?>" id="<?php echo $product['id']; ?>" data-productName="<?php echo $product['name']; ?>" data-categoryName="<?php echo $product['category_name']; ?>" data-price="<?php echo $product['price']; ?>" data-qty="<?php echo $product['qty']; ?>" data-sellerName="<?php echo $product['seller_name']; ?>" data-imageName="<?php echo $product['image_name']; ?>" data-imagePath="<?php echo $product['image_path']; ?>">Add to Cart</button>
                     </div>
                 </div>
                 <?php } ?>
@@ -238,7 +238,7 @@ if ($result->num_rows > 0) {
                         <h2><?php echo $product['name']; ?></h2>
                         <h5>Net Qty : <?php echo $product['qty'].' gm'; ?></h5>
                         <h5>Price : <?php echo $product['price'].' ₹'; ?></h5>
-                        <button href="#" class="addToCart" data-productId="<?php echo $product['id']; ?>" id="<?php echo $product['id']; ?>" data-productName="<?php echo $product['name']; ?>" data-categoryName="<?php echo $product['category_name']; ?>" data-price="<?php echo $product['price']; ?>" data-qty="<?php echo $product['qty']; ?>" data-sellerName="<?php echo $product['seller_name']; ?>" data-imageName="<?php echo $product['image_name']; ?>" data-imagePath="<?php echo $product['image_path']; ?>">Add to Cart</button>
+                        <button href="#" class="addToCart btn btn-primary" data-productId="<?php echo $product['id']; ?>" id="<?php echo $product['id']; ?>" data-productName="<?php echo $product['name']; ?>" data-categoryName="<?php echo $product['category_name']; ?>" data-price="<?php echo $product['price']; ?>" data-qty="<?php echo $product['qty']; ?>" data-sellerName="<?php echo $product['seller_name']; ?>" data-imageName="<?php echo $product['image_name']; ?>" data-imagePath="<?php echo $product['image_path']; ?>">Add to Cart</button>
                     </div>
                 </div>
                 <?php } ?>
@@ -261,7 +261,7 @@ if ($result->num_rows > 0) {
                         <h2><?php echo $product['name']; ?></h2>
                         <h5>Net Qty : <?php echo $product['qty'].' gm'; ?></h5>
                         <h5>Price : <?php echo $product['price'].' ₹'; ?></h5>
-                        <button href="#" class="addToCart" data-productId="<?php echo $product['id']; ?>" id="<?php echo $product['id']; ?>" data-productName="<?php echo $product['name']; ?>" data-categoryName="<?php echo $product['category_name']; ?>" data-price="<?php echo $product['price']; ?>" data-qty="<?php echo $product['qty']; ?>" data-sellerName="<?php echo $product['seller_name']; ?>" data-imageName="<?php echo $product['image_name']; ?>" data-imagePath="<?php echo $product['image_path']; ?>">Add to Cart</button>
+                        <button href="#" class="addToCart btn btn-primary" data-productId="<?php echo $product['id']; ?>" id="<?php echo $product['id']; ?>" data-productName="<?php echo $product['name']; ?>" data-categoryName="<?php echo $product['category_name']; ?>" data-price="<?php echo $product['price']; ?>" data-qty="<?php echo $product['qty']; ?>" data-sellerName="<?php echo $product['seller_name']; ?>" data-imageName="<?php echo $product['image_name']; ?>" data-imagePath="<?php echo $product['image_path']; ?>">Add to Cart</button>
                     </div>
                 </div>
                 <?php } ?>
