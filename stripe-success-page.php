@@ -1,6 +1,13 @@
 <?php
 require_once('admin/config.php');
 
+$query_for_emptying_cart = "DELETE FROM cart";
+if ($conn->query($query_for_emptying_cart) === TRUE) {
+    /*echo '<script type="text/javascript"> window.location = "../stripe-success-page.php" </script>';*/
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
 ?>
 
 <!DOCTYPE html>
