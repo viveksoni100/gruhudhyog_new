@@ -61,7 +61,6 @@ $count = $result->fetch_assoc();
                         <i class="fas fa-cart-arrow-down" style="font-size: x-large; margin-top: 8px; cursor: pointer;">
                             <?php echo $count['COUNT']; ?>
                         </i></a>
-
                     <div class="nav-item dropdown">
 
                         <div class="dropdown-menu">
@@ -69,12 +68,12 @@ $count = $result->fetch_assoc();
                             <a href="single.html" class="dropdown-item">Blog Detail</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
     <div class="container-fluid">
+        <p style="color: red; display: none;" id="stripe-error">Ooppss! we coulnd't process your payment earlier, please try again!</p>
         <table id="cart" class="table table-hover table-condensed">
             <thead>
                 <tr>
@@ -134,11 +133,18 @@ $count = $result->fetch_assoc();
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript">    
     $(document).ready(function() {
         if ($("#shippingAddress").val() === "") {
             $("#checkoutBtn").hide();
         } else {$("#checkoutBtn").show();}
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentFlag = urlParams.get('paymentSuccess');
+        if(paymentFlag === 'false') {
+            $("#stripe-error").css("display", "block");
+        }
+        
     });
     $("#shippingAddress").on("change keyup paste", function() {
        $("#checkoutBtn").show();

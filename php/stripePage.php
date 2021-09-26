@@ -31,8 +31,8 @@ $session = \Stripe\Checkout\Session::create([
   'payment_method_types' => ['card'],
   'line_items' => [$line_items],
     'mode' => 'payment',
-    'success_url' => 'http://localhost:4242/success',
-    'cancel_url' => 'http://example.com/cancel',
+    'success_url' => 'http://localhost/gruhudhyog_new/stripe-success-page.php',
+    'cancel_url' => 'http://localhost/gruhudhyog_new/cart.php?paymentSuccess=false',
 ]);
 
 ?>
