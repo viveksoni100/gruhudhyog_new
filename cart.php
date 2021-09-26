@@ -58,9 +58,9 @@ $count = $result->fetch_assoc();
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto">
                     <a href="#">
-                    <i class="fas fa-cart-arrow-down" style="font-size: x-large; margin-top: 8px; cursor: pointer;">
-                        <?php echo $count['COUNT']; ?>
-                    </i></a>
+                        <i class="fas fa-cart-arrow-down" style="font-size: x-large; margin-top: 8px; cursor: pointer;">
+                            <?php echo $count['COUNT']; ?>
+                        </i></a>
 
                     <div class="nav-item dropdown">
 
@@ -88,49 +88,61 @@ $count = $result->fetch_assoc();
             <tbody>
                 <tr>
                     <?php if (!empty($product_dataset_cart)) { ?>
-                        <?php foreach ($product_dataset_cart as $cart_product) { ?>
+                    <?php foreach ($product_dataset_cart as $cart_product) { ?>
 
 
-                            <td data-th="Product">
-                                <div class="row">
-                                    <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
-                                    <div class="col-sm-10">
+                    <td data-th="Product">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
+                            <div class="col-sm-10">
 
-                                        <h5><?php echo $cart_product['product_name']; ?></h5>
-                                        <h6>Category : <?php echo $cart_product['category_name']; ?></h6>
-                                    </div>
-                                </div>
-                            </td>
+                                <h5><?php echo $cart_product['product_name']; ?></h5>
+                                <h6>Category : <?php echo $cart_product['category_name']; ?></h6>
+                            </div>
+                        </div>
+                    </td>
 
-                            <td data-th="Quantity">
-                                <h6><?php echo $cart_product['qty'].' gm';?>
-                                
-                            </td>
-                            <td data-th="Subtotal" class="text-center">
-                                <h6><?php echo $cart_product['price'] ?></h6>
-                            </td>
-                            <td class="actions" data-th="">
+                    <td data-th="Quantity">
+                        <h6><?php echo $cart_product['qty'].' gm';?>
 
-                                <a class="btn btn-danger btn-sm" 
-                                   href="php/deleteFromCart.php?id=<?php echo $cart_product['id']; ?>"
-                                   style="color: white;"><i class="fas fa-trash-alt"></i></a>
-                            </td>
+                    </td>
+                    <td data-th="Subtotal" class="text-center">
+                        <h6><?php echo $cart_product['price'] ?></h6>
+                    </td>
+                    <td class="actions" data-th="">
+
+                        <a class="btn btn-danger btn-sm" href="php/deleteFromCart.php?id=<?php echo $cart_product['id']; ?>" style="color: white;"><i class="fas fa-trash-alt"></i></a>
+                    </td>
 
 
                 </tr>
-            <?php } ?>
-        <?php } ?>
+                <?php } ?>
+                <?php } ?>
             </tbody>
             <tfoot>
                 <tr>
-                    <td></td>
-                    <td colspan="1" class="hidden-xs"></td>
+                    <td colspan="2">
+                        Shipping Address :<br />
+                        <textarea id="shippingAddress" class="form-control"></textarea>
+                    </td>
                     <td class="hidden-xs text-center"><strong><?php echo 'Grand Total : '.$total_amount['TOTAL'] ?></strong></td>
-                    <td><a href="php/stripePage.php" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    <td><a href="php/stripePage.php" id="checkoutBtn" class="btn btn-success btn-block">
+                        Checkout <i class="fa fa-angle-right"></i></a></td>
                 </tr>
             </tfoot>
         </table>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        if ($("#shippingAddress").val() === "") {
+            $("#checkoutBtn").hide();
+        } else {$("#checkoutBtn").show();}
+    });
+    $("#shippingAddress").on("change keyup paste", function() {
+       $("#checkoutBtn").show();
+    });
+</script>
 
 </html>
