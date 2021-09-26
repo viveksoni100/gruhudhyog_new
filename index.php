@@ -346,7 +346,7 @@ if ($result->num_rows > 0) {
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" required>
+                            <input type="number" class="form-control" name="subject" id="subject" placeholder="Phone number" required="required" data-validation-required-message="Please enter a subject" required>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
@@ -388,11 +388,15 @@ if ($result->num_rows > 0) {
             const urlParams = new URLSearchParams(window.location.search);
             const getFlag = urlParams.get('login');
             const user = urlParams.get('user');
+            const emailSent = urlParams.get('emailSent');
             if (getFlag === 'success') {
                 $(".loginBtn").html("Logout");
                 $(".loginBtn").attr("href", "index.html");
                 $(".regBtn").html("Hi " + user);
                 $(".regBtn").attr("href", "#");
+            }
+            if (emailSent === 'true') {
+                alert("Inquiry email is sent!");
             }
         });
 

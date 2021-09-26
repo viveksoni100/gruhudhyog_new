@@ -1,22 +1,3 @@
-<?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-require '../vendor/autoload.php';
-
-$name = $_POST['name'];
-$emailAddr = $_POST['email'];
-$subject = $_POST['subject'];
-$message = $_POST['message'];
-
-$mail = new PHPMailer();
-
-$email4 = "</p><p>Message :";
-$email3 = "</p><p>Phone :";
-$email2 = "</p><p>Email :";
-$email = "
-<?php
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -117,7 +98,8 @@ $email = "
 			padding-top: 20px;
 			padding-bottom: 20px;'>
                                 <div style='display: none; visibility: hidden; overflow: hidden; opacity: 0; font-size: 1px; line-height: 1px; height: 0; max-height: 0; max-width: 0;
-			color: #F0F0F0;' class='preheader'></div>
+			color: #F0F0F0;' class='preheader'>
+                                    Available on&nbsp;GitHub and&nbsp;CodePen. Highly compatible. Designer friendly. </div>
                             </td>
                         </tr>
                     </table>
@@ -153,8 +135,10 @@ $email = "
 			padding-top: 25px; 
 			color: #000000;
 			font-family: sans-serif;' class='paragraph'>
-                                <p>Name :";
-$email5 = "</p>
+                                <p>Name : </p>
+                                <p>Email : </p>
+                                <p>Phone : </p>
+                                <p>Message : </p>
 
                             </td>
                         </tr>
@@ -212,40 +196,3 @@ $email5 = "</p>
     </html>
 </body>
 </html>
-?>
-";
-
-try {
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
-    $mail->isSMTP();                                            
-    $mail->Host       = 'smtp.gmail.com';                     
-    $mail->SMTPAuth   = true;                                   
-    $mail->Username   = 'janu28project@gmail.com';        
-    $mail->Password   = '28janu28';                          
-    $mail->SMTPSecure = 'ssl';
-    $mail->Port       = 465;  
-    $mail->SMTPOptions = array(
-        'ssl' => array(
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
-        )
-    );
-
-    //Recipients
-    $mail->setFrom('vivek.fullstack.dev@gmail.com', 'ADMIN');
-    $mail->addAddress('janu28project@gmail.com', 'Jhanvi');     
-
-    //Content
-    $mail->isHTML(true);                                  
-    $mail->Subject = 'Inquiry Form';
-    $mail->Body    = $email.$name.$email2.$emailAddr.$email3.$subject.$email4.$message.$email5;
-
-    $mail->send();
-    echo '<script type="text/javascript"> window.location = "../index.php?emailSent=true" </script>';
-} catch (Exception $e) {
-    echo 'Message could not be sent. Mailer Error: {$mail->ErrorInfo}';
-}
-
-?>
