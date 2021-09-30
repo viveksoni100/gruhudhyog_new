@@ -1,12 +1,183 @@
 <?php
 require_once('admin/config.php');
 
-$query_for_emptying_cart = "DELETE FROM cart";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
+
+$mail = new PHPMailer();
+
+$qery_for_fetching_distinct_seller_email = "SELECT c.product_name, c.category_name, c.price, c.qty, c.seller_name, u.email FROM cart c LEFT JOIN user u ON c.seller_name = u.name";
+$result = $conn->query($qery_for_fetching_distinct_seller_email);
+$seller_email_dataset = [];
+if ($result->num_rows > 0) {
+    $seller_email_dataset = $result->fetch_all(MYSQLI_ASSOC);
+}
+
+foreach ($seller_email_dataset as $seller) {
+    $email_content = "<!DOCTYPE html>
+<html lang='en' >
+<head>
+  <meta charset='UTF-8'>
+  <title>CodePen - Email template: general</title>
+</head>
+<body>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+  	<meta name='viewport' content='width=device-width, initial-scale=1.0;'>
+ 	<meta name='format-detection' content='telephone=no'/>
+	<style>
+body { margin: 0; padding: 0; min-width: 100%; width: 100% !important; height: 100% !important;}
+body, table, td, div, p, a { -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%; }
+table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse !important; border-spacing: 0; }
+img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+#outlook a { padding: 0; }
+.ReadMsgBody { width: 100%; } .ExternalClass { width: 100%; }
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
+@media all and (min-width: 560px) {
+	.container { border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; -khtml-border-radius: 8px;}
+}
+a, a:hover {
+	color: #127DB3;
+}
+.footer a, .footer a:hover {
+	color: #999999;
+}
+ 	</style>
+	<title>Get this responsive email template</title>
+</head>
+<body topmargin='0' rightmargin='0' bottommargin='0' leftmargin='0' marginwidth='0' marginheight='0' width='100%' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%; height: 100%; -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%;
+	background-color: #F0F0F0;
+	color: #000000;'
+	bgcolor='#F0F0F0'
+	text='#000000'>
+<table width='100%' align='center' border='0' cellpadding='0' cellspacing='0' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%;' class='background'><tr><td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;'
+	bgcolor='#F0F0F0'>
+<table border='0' cellpadding='0' cellspacing='0' align='center'
+	width='560' style='border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;' class='wrapper'>
+	<tr>
+		<td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 20px;
+			padding-bottom: 20px;'>
+			<div style='display: none; visibility: hidden; overflow: hidden; opacity: 0; font-size: 1px; line-height: 1px; height: 0; max-height: 0; max-width: 0;
+			color: #F0F0F0;' class='preheader'>
+				</div>
+		</td>
+	</tr>
+</table>
+<table border='0' cellpadding='0' cellspacing='0' align='center'
+	bgcolor='#FFFFFF'
+	width='560' style='border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;' class='container'>
+	<tr>
+		<td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 24px; font-weight: bold; line-height: 130%;
+			padding-top: 25px;
+			color: #000000;
+			font-family: sans-serif;' class='header'>
+				<a target='_blank' style='text-decoration: none;'
+				href='https://github.com/konsav/email-templates/'><img border='0' vspace='0' hspace='0'
+				src='https://raw.githubusercontent.com/viveksoni100/images.blogs/master/other/GU_Logo.JPG'
+				width='100' height='30'
+				alt='Logo' title='Logo' style='
+				color: #000000;
+				font-size: 10px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;' /></a>
+		</td>
+	</tr>
+	<tr>
+		<td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-bottom: 3px; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 18px; font-weight: 300; line-height: 150%;
+			padding-top: 5px;
+			color: #000000;
+			font-family: sans-serif;' class='subheader'>
+				Order is placed
+		</td>
+	</tr>
+	<tr>
+		<td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+			padding-top: 20px;' class='hero'><a target='_blank' style='text-decoration: none;'
+			href='https://github.com/konsav/email-templates/'><img border='0' vspace='0' hspace='0'
+			src='https://raw.githubusercontent.com/viveksoni100/images.blogs/master/other/email_image_gu.jpg'
+			alt='Please enable images to view this content' title='Hero Image'
+			width='560' style='
+			width: 100%;
+			max-width: 560px;
+			color: #000000; font-size: 13px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;'/></a></td>
+	</tr>
+	<tr>
+		<td align='left' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+			padding-top: 25px; 
+			color: #000000;
+			font-family: sans-serif;' class='paragraph'>";
+    $email_name = $seller['seller_name'];
+    $post_name_content = ", <br>
+            below is the detail of order placed on gruhudhyog.com portal, kindly ship them as early as possible.
+		</td>
+	</tr>
+	<tr>	
+		<td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;' class='line'><hr
+			color='#E0E0E0' align='center' width='100%' size='1' noshade style='margin: 0; padding: 0;' />
+		</td>
+	</tr>
+	<tr>
+		<td align='left' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+			padding-top: 25px; 
+			color: #000000;
+			font-family: sans-serif;' class='paragraph'>";
+    
+    
+    /*echo $seller['product_name'];
+    echo $seller['category_name'];
+    echo $seller['price'];
+    echo $seller['qty'];
+    echo $seller['seller_name'];
+    echo $seller['email'];*/
+    try {
+    //Server settings
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+    $mail->isSMTP();                                            
+    $mail->Host       = 'smtp.gmail.com';                     
+    $mail->SMTPAuth   = true;                                   
+    $mail->Username   = 'janu28project@gmail.com';        
+    $mail->Password   = '28janu28';                          
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port       = 465;  
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
+
+    //Recipients
+    $mail->setFrom('vivek.fullstack.dev@gmail.com', 'ADMIN');
+    $mail->addAddress($seller['email'], $seller['seller_name']);     
+
+    //Content
+    $mail->isHTML(true);                                  
+    $mail->Subject = 'Order Update Mail';
+    $mail->Body    = $email_content.$email_name.$post_name_content.'Product Name : '.$seller['product_name'].' <br/>'.
+        'Category Name : '.$seller['category_name'].' <br/>'.
+        'Price : '.$seller['price'].' <br/>'.
+        'Qty. : '.$seller['qty'];
+    $mail->send();
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: {$mail->ErrorInfo}';
+}
+}
+
+
+
+/*$query_for_emptying_cart = "DELETE FROM cart";
 if ($conn->query($query_for_emptying_cart) === TRUE) {
-    /*echo '<script type="text/javascript"> window.location = "../stripe-success-page.php" </script>';*/
+    echo '<script type="text/javascript"> window.location = "../stripe-success-page.php" </script>';
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-}
+}*/
 
 ?>
 
@@ -57,8 +228,8 @@ if ($conn->query($query_for_emptying_cart) === TRUE) {
                     <a href="Register.html" class="nav-item nav-link regBtn">Register</a>
                     <a href="login.html" class="nav-item nav-link" style="display: none;" id="loggedInUser">Hi, Vivek</a>
                     <a href="cart.php"><i class="fas fa-cart-arrow-down" style="font-size: x-large; margin-top: 8px; cursor: pointer;">
-                        <span id="cartCount">0</span>
-                    </i></a>
+                            <span id="cartCount">0</span>
+                        </i></a>
                     <div class="nav-item dropdown">
 
                         <div class="dropdown-menu">
@@ -74,8 +245,8 @@ if ($conn->query($query_for_emptying_cart) === TRUE) {
     <!-- Nav Bar End -->
 
     <center>
-    <h2 style="margin-top: 15%;">Thank you for shopping from Gruhudhyog.com</h2>
-    <h3>The ordered products will be at your doorsteps whithin 3-4 days 😀</h3>
+        <h2 style="margin-top: 15%;">Thank you for shopping from Gruhudhyog.com</h2>
+        <h3>The ordered products will be at your doorsteps whithin 3-4 days 😀</h3>
     </center>
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
