@@ -64,15 +64,15 @@ if ($result->num_rows > 0) {
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto">
                     <a href="index.php" class="nav-item nav-link active">Home</a>
-                    <a href="notification.html" class="nav-item nav-link">Update</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <!--<a href="notification.html" class="nav-item nav-link">Update</a>-->
+                    <a href="#contactPage" class="nav-item nav-link">About</a>
+                    <a href="#contactPage" class="nav-item nav-link">Contact</a>
                     <a href="login.html" class="nav-item nav-link loginBtn">Login</a>
                     <a href="Register.html" class="nav-item nav-link regBtn">Register</a>
                     <a href="login.html" class="nav-item nav-link" style="display: none;" id="loggedInUser">Hi, Vivek</a>
                     <a href="cart.php"><i class="fas fa-cart-arrow-down" style="font-size: x-large; margin-top: 8px; cursor: pointer;">
-                        <span id="cartCount">0</span>
-                    </i></a>
+                            <span id="cartCount">0</span>
+                        </i></a>
                     <div class="nav-item dropdown">
 
                         <div class="dropdown-menu">
@@ -272,7 +272,7 @@ if ($result->num_rows > 0) {
     <!-- Pickle End -->
 
     <!-- Contact Start -->
-    <div class="contact">
+    <div class="contact" id="contactPage">
         <div class="container">
             <div class="section-header text-center">
                 <p>Contact Us</p>
@@ -318,14 +318,8 @@ if ($result->num_rows > 0) {
                             <i class="fa fa-share"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Follow Us</h3>
-                            <div class="contact-social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+                            <h3>About us</h3>
+                            We are bla bla bla...
                         </div>
                     </div>
                 </div>
@@ -433,22 +427,23 @@ if ($result->num_rows > 0) {
                         "&qty=" + elem.attr('data-qty') +
                         "&sellerName=" + elem.attr('data-sellerName') +
                         "&imageName=" + elem.attr('data-imageName'),
-                    dataType: "json"
-                }).done(function() {
-                    console.log("Success...!");
+
+                }).done(function(res) {
+                    debugger;
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            let count = this.responseText;
+                            document.getElementById("cartCount").innerHTML = count;
+                        }
+                    }
+                    xmlhttp.open("GET", "/gruhudhyog_new/php/cartCounter.php", true);
+                    xmlhttp.send();
                 });
                 document.getElementById(id).innerHTML = "Added";
                 document.getElementById(id).disabled = true;
 
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        let count = this.responseText;
-                        document.getElementById("cartCount").innerHTML = count;
-                    }
-                }
-                xmlhttp.open("GET", "/gruhudhyog_new/php/cartCounter.php", true);
-                xmlhttp.send();
+
                 return false;
             });
         });

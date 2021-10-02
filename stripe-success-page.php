@@ -172,12 +172,12 @@ a, a:hover {
 
 
 
-/*$query_for_emptying_cart = "DELETE FROM cart";
+$query_for_emptying_cart = "DELETE FROM cart";
 if ($conn->query($query_for_emptying_cart) === TRUE) {
-    echo '<script type="text/javascript"> window.location = "../stripe-success-page.php" </script>';
+    /*echo '<script type="text/javascript"> window.location = "stripe-success-page.php" </script>';*/
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-}*/
+}
 
 ?>
 
@@ -301,40 +301,6 @@ if ($conn->query($query_for_emptying_cart) === TRUE) {
         }
     </script>
 
-    <script type="text/javascript">
-        $(function() {
-            $('.addToCart').click(function() {
-                let elem = $(this);
-                let id = elem.prop('id')
-                $.ajax({
-                    type: "GET",
-                    url: "/gruhudhyog_new/php/addToCart.php",
-                    data: "id=" + elem.attr('data-productId') + "&productName=" + elem.attr('data-productName') +
-                        "&categoryName=" + elem.attr('data-categoryName') +
-                        "&price=" + elem.attr('data-price') +
-                        "&qty=" + elem.attr('data-qty') +
-                        "&sellerName=" + elem.attr('data-sellerName') +
-                        "&imageName=" + elem.attr('data-imageName'),
-                    dataType: "json"
-                }).done(function() {
-                    console.log("Success...!");
-                });
-                document.getElementById(id).innerHTML = "Added";
-                document.getElementById(id).disabled = true;
-
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        let count = this.responseText;
-                        document.getElementById("cartCount").innerHTML = count;
-                    }
-                }
-                xmlhttp.open("GET", "/gruhudhyog_new/php/cartCounter.php", true);
-                xmlhttp.send();
-                return false;
-            });
-        });
-    </script>
 </body>
 
 </html>
